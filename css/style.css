@@ -4,22 +4,26 @@
 body {
     font-family: 'Gowun Batang', serif;
     font-weight: 400;
-    line-height: 1.2;                  
+    line-height: 1.8;                  
     color: #333333;                  
     background-color: #fcfcfc;       
     font-size: 18px;
 }
 
+article {
+    padding-left: 35px;
+}
+
 h1 {
-    color: #2c3e50;         /* 신뢰감을 주는 짙은 남색(Navy) */
-    font-size: 25px;           /* 글자 크기 */
+    color: #4A2C65;         /* 신뢰감을 주는 짙은 남색(Navy) */
+    font-size: 30px;           /* 글자 크기 */
     padding-bottom: 10px;     /* 밑줄과 글자 사이의 여백 */
-    border-bottom: 3px solid #2c3e50; /* 제목 아래에 도톰한 메인 컬러 선 추가 */
+    border-bottom: 3px solid #4A2C65; /* 제목 아래에 도톰한 메인 컬러 선 추가 */
 }
 
 .home-button{
     float:right;
-    background:#16a085;
+    background-color:#9B7AB5;
     color:white;
     padding:8px 15px;
     border-radius:8px;
@@ -29,30 +33,30 @@ h1 {
 
 .home-button:hover{
     background:none;
-    background-color:#1a7865;
+    background-color:#6A4F8A;
 }
 
 h2 {
     color: #2c3e50;             /* 메인 남색 적용 */
-    font-size: 18px;           /* h1보다 조금 작은 크기 */
-    background-color: #ecf0f1;  /* 밝은 회색 배경색으로 한 줄을 채움 */
+    font-size: 25px;           /* h1보다 조금 작은 크기 */
+    background-color: #e8e3f1;  /* 밝은 보라색 배경색으로 한 줄을 채움 */
     padding: 10px 15px;         /* 박스 내부 여백 (상하 10px, 좌우 15px) */
-    border-left: 5px solid #16a085; /* 왼쪽에 포인트가 되는 청록색 두꺼운 선 추가 */
+    border-left: 5px solid #4A2C65; /* 왼쪽에 포인트가 되는 보라색 두꺼운 선 추가 */
     margin-top: 40px;           /* 위쪽 콘텐츠와 충분한 거리 확보 */
     margin-bottom: 15px;        /* 아래쪽 콘텐츠와의 간격 */
 }
 
 h3 {
-    color: #16a085;             /* 포인트 청록색 적용 */
-    font-size: 15px;           /* 본문보다 약간 큰 크기 */
+    color: #9f2c8e;             /* 포인트 자주색 적용 */
+    font-size: 21px;           /* 본문보다 약간 큰 크기 */
     padding-bottom: 5px;        /* 밑줄과의 간격 */
-    border-bottom: 2px solid #16a085; /* 아래쪽에 깔끔한 실선 추가 */
+    border-bottom: 2px solid #9f2c8e; /* 아래쪽에 깔끔한 실선 추가 */
     margin-top: 25px;
     margin-bottom: 10px;
 }
 
 a {
-    color: #2980b9;         /* 링크는 선명한 파란색 */
+    color: #3f0786;         /* 링크는 선명한 보라색 */
     text-decoration: none;  /* 밑줄 제거하여 깔끔하게 처리 */
 }
 
@@ -107,17 +111,18 @@ table {
 }
 
 th, td {
-    border: 1px solid #dddddd;      /* 얇고 정돈된 테두리 */
+    border: 1px solid #a07bcf;      /* 얇고 정돈된 테두리 */
     padding: 12px;                  /* 셀 내부 여백을 늘려 쾌적하게 텍스트 배치 */
     text-align: center;             /* 글자 중앙 정렬 */
 }
 
 th {
-    background-color: #f8f9fa;      /* 헤더 영역 배경색 지정을 통한 구분 */
+    background-color: #d2c6e7;      /* 헤더 영역 배경색 지정을 통한 구분 */
 }
 
+
 fieldset {
-    border: 1px solid #e0e0e0;      /* 딱딱한 검은 선을 연한 회색 실선으로 변경 */
+    border: 1px solid #3f0786;      /* 딱딱한 검은 선을 보라색으로 변경 */
     border-radius: 6px;             /* 모서리를 둥글게 처리 */
     padding: 20px;                  /* 그룹 상자 내부 여백을 두툼하게 설정 */
     margin-bottom: 20px;            /* fieldset끼리 서로 겹치지 않게 바깥 여백 추가 */
@@ -125,7 +130,7 @@ fieldset {
 
 legend {
     font-weight: bold;              /* 그룹 제목은 두껍게 */
-    color: #2c3e50;                 /* 메인 남색 적용 */
+    color: #9f2c8e;                 /* 메인 자주색 적용 */
     padding: 0 10px;                /* 선과 글자가 붙지 않도록 좌우 여백 추가 */
 }
 
@@ -174,12 +179,22 @@ textarea {
 
 /* 회원가입 버튼 개별 스타일 (메인 포인터 컬러) */
 .btn-submit {
-    background-color: #16a085;      /* 메인 청록색 배경 */
+    background-color: #9B7AB5;      /* 메인 청록색 배경 */
     color: #ffffff;                 /* 글자색 흰색 */
+}
+
+.btn-submit:hover{    
+    background:none;
+    background-color:#6A4F8A;
 }
 
 /* 다시 작성 버튼 개별 스타일 (서브 회색 컬러) */
 .btn-reset {
     background-color: #bdc3c7;      /* 차분한 회색 배경 */
     color: #ffffff;
+}
+
+.btn-reset:hover{
+    background:none;
+    background-color:#82878b;
 }
