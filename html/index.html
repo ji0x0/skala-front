@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>나의 개인 포털</title>
-    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div class="container">
@@ -48,6 +48,12 @@
         <aside>
              <h2>🌤️ 실시간 정보</h2>
                 <p>현재 위치: 광주광역시 광산구 📍</p>
+                <section class="game-area">
+                <h3>🎮 자바스크립트천국</h3>
+                <button class="btn-submit" onclick="showMyBag()">내 가방 보기 🎒</button>
+                <button class="btn-submit" onclick="startGame()">업다운 게임 시작 🎲</button>
+                <button class="btn-submit" onclick="checkGrade()">학점 계산기 🧮</button>
+                </section>
         </aside>
         </div>
 
@@ -57,5 +63,8 @@
             <p><small>© 2026 지영 포트폴리오. 모든 태그는 웹 표준 시맨틱 태그로 작성되었습니다.</small></p>
         </footer>
 </div>
+<script src="../script/bag.js"></script>
+<script src="../script/upDown.js"></script>
+<script src="../script/grade.js"></script>
 </body>
 </html>

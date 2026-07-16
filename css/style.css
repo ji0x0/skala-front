@@ -6,19 +6,12 @@ body {
     font-weight: 400;
     line-height: 1.8;                  
     color: #333333;                  
-    background-color: #fcfcfc;       
+    background-color: #f7f4f9;       
     font-size: 18px;
 }
 
 article {
     padding-left: 35px;
-}
-
-h1 {
-    color: #4A2C65;         /* 신뢰감을 주는 짙은 남색(Navy) */
-    font-size: 30px;           /* 글자 크기 */
-    padding-bottom: 10px;     /* 밑줄과 글자 사이의 여백 */
-    border-bottom: 3px solid #4A2C65; /* 제목 아래에 도톰한 메인 컬러 선 추가 */
 }
 
 .home-button{
@@ -29,11 +22,19 @@ h1 {
     border-radius:8px;
     text-decoration:none;
     font-size:16px;
+    
 }
 
 .home-button:hover{
     background:none;
     background-color:#6A4F8A;
+}
+
+h1 {
+    color: #4A2C65;         /* 신뢰감을 주는 짙은 남색(Navy) */
+    font-size: 30px;           /* 글자 크기 */
+    padding-bottom: 10px;     /* 밑줄과 글자 사이의 여백 */
+    border-bottom: 3px solid #4A2C65; /* 제목 아래에 도톰한 메인 컬러 선 추가 */
 }
 
 h2 {
@@ -80,18 +81,25 @@ a:hover {
     border-radius: 15px;             /* 모서리를 부드럽게 깎음 */
     padding: 20px;                  /* 카드 내부 테두리와 콘텐츠 사이의 두툼한 여백 */
     margin-bottom: 25px;            /* 카드와 카드 사이가 떨어지도록 바깥 아래 여백 추가 */
-    display: inline-block;
-    width: 31%;
-    vertical-align: top;            /* 카드들이 수평으로 나란히 정렬되도록 설정 */
+    
     
     /* 그림자 효과 효과 (선택 사항이지만 박스 모델의 입체감을 주기 좋습니다) */
     box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+
+    /* 위치 변경(transform)과 그림자(box-shadow)가 변할 때 0.3초 동안 부드럽게 움직이도록 설정 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trip-card:hover {
+    transform: translateY(-8px);     /* 카드를 Y축(위쪽) 방향으로 8px만큼 들어 올림 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* 그림자를 더 넓고 진하게 하여 공중 붕 뜬 입체감 부여 */
 }
 
 .trip-grid-container {
-    display: flex;                  /* 카드들을 가로로 나란히 배치 */
-    flex-wrap: wrap;                /* 화면이 좁아지면 카드들이 아래로 내려가도록 설정 */
-    justify-content: space-between; /* 카드 사이의 간격을 균등하게 배치 */
+    display: grid;                  /* 카드들을 가로로 나란히 배치 */
+    grid-template-columns: repeat(3, 1fr); /* 세 개의 열로 나누기 */
+    gap: 15px;                          /* 카드 사이의 간격을 일정하게 유지 */
+    margin-top: 25px;                     /* 위쪽 콘텐츠와의 간격 */
 }
 
 /* 카드 내부의 이미지 조절 */
@@ -101,6 +109,17 @@ a:hover {
     max-width: 100%;                /* 이미지가 부모 박스 밖으로 삐져나가지 않게 방지 */
     height: 250px;
     margin: 0 auto;                 /* 이미지가 카드 안에서 중앙에 위치하도록 설정 */
+}
+
+figure img{
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+audio {
+    display: block;
+    margin: 0 auto;
 }
 
 /* 시간표 테이블 정돈 (myClass.html) */
@@ -175,17 +194,25 @@ textarea {
     border-radius: 4px;             /* 모서리 둥글게 */
     cursor: pointer;                /* 마우스 포인터 손가락 모양으로 */
     margin-right: 10px;             /* 버튼끼리 떨어지도록 우측 간격 추가 */
+    margin-bottom: 25px;            /* 버튼과 아래쪽 콘텐츠 사이의 간격 */
+    transition: all 0.2s ease;
 }
 
-/* 회원가입 버튼 개별 스타일 (메인 포인터 컬러) */
+/* 회원가입 버튼, 자바스크립트 천국 하위 버튼 개별 스타일 (메인 포인터 컬러) */
 .btn-submit {
-    background-color: #9B7AB5;      /* 메인 청록색 배경 */
+    background-color: #9B7AB5;      /* 메인 보라색 배경 */
     color: #ffffff;                 /* 글자색 흰색 */
 }
 
 .btn-submit:hover{    
     background:none;
     background-color:#6A4F8A;
+}
+
+aside .btn-submit {
+    display: block;
+    width: 300px;
+    margin: 0 auto 10px;
 }
 
 /* 다시 작성 버튼 개별 스타일 (서브 회색 컬러) */
@@ -197,4 +224,76 @@ textarea {
 .btn-reset:hover{
     background:none;
     background-color:#82878b;
+}
+
+/* 네비게이션 바 스타일링 */
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 20px;
+}
+
+nav a {
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* 부드러운 변화 */
+}
+
+nav a:hover {
+    background-color: #6A4F8A;
+    color: #ffffff;
+}
+
+/** Flexbox로 메인 콘텐츠와 사이드바를 나란히 배치하기 **/ 
+main {
+    flex: 7;            /* 전체 공간 중 70%만큼의 비율을 차지 */
+}
+aside {
+    flex: 3;            /* 전체 공간 중 30%만큼의 비율을 차지 */
+    background-color: #f9f9f1; /* 사이드바 구분을 위해 연한 배경색 추가 */
+    border-radius: 6px;
+    padding: 15px;
+}
+aside h2 {
+    margin-top: 25px;
+}
+.content-wrapper {
+    display: flex;      /* 가로 배치 선언 */
+    gap: 30px;          /* 본문과 사이드바 사이의 여백 */
+    align-items: flex-start; /* 두 영역의 높이가 달라도 디자인이 깨지지 않게 설정 */
+}
+
+/* 화면 가로 폭이 768px 이하(모바일 기기 수준)가 되면 아래 규칙들이 발동합니다. */
+@media (max-width: 768px) {
+    
+    /* 1. 메인 메뉴바를 가로 배치에서 세로 쌓기 구조로 변경 */
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    /* 2. ★ 추가: 오늘의 주요소식(main)과 실시간 정보(aside)를 세로 1열로 정렬 */
+    .content-wrapper {
+        flex-direction: column; /* 가로(row)로 나열되던 flex 아이템들을 세로(column)로 변경 */
+        gap: 20px;
+    }
+
+    /* 모바일에서는 본문과 사이드바가 둘 다 화면 꽉 차게 100% 폭을 쓰도록 유도 */
+    main, aside {
+        width: 100%;
+    }
+     article{
+        padding-left:0;
+    }
+
+
+    
+    /* 3. 여행 앨범 3열 바둑판을 모바일에서는 1열(1fr)로 늘려서 시원하게 보여줌 */
+    .trip-grid-container {
+        grid-template-columns: 1fr;          /* 부모 박스 가득 차게 */
+    }
+    .trip-card {
+    width: 100%;
+    }
 }
