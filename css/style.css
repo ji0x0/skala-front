@@ -251,13 +251,16 @@ main {
 }
 aside {
     flex: 3;            /* 전체 공간 중 30%만큼의 비율을 차지 */
-    background-color: #f9f9f1; /* 사이드바 구분을 위해 연한 배경색 추가 */
-    border-radius: 6px;
+    background-color: #F7F4FB; /* 사이드바 구분을 위해 연한 배경색 추가 */
+    border-radius: 10px;
+    border: 1px solid #E6DEEF;
+    box-shadow: 0 4px 12px rgba(108, 74, 145, 0.08);
     padding: 15px;
 }
 aside h2 {
     margin-top: 25px;
 }
+
 .content-wrapper {
     display: flex;      /* 가로 배치 선언 */
     gap: 30px;          /* 본문과 사이드바 사이의 여백 */
