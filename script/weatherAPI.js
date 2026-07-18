@@ -1,13 +1,13 @@
 // 외부에서 가져다 쓸 수 있도록 export를 함수 맨 앞에 붙입니다.
 function getWeatherText(code) {
-    if (code === 0) return "맑음";
-    if ([1, 2].includes(code)) return "대체로 맑음";
-    if (code === 3) return "흐림";
-    if ([45, 48].includes(code)) return "안개";
-    if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return "비";
-    if ([71, 73, 75, 77, 85, 86].includes(code)) return "눈";
-    if ([95, 96, 99].includes(code)) return "천둥번개";
-    return "알 수 없음";
+    if (code === 0) return "☀️맑음";
+    if ([1, 2].includes(code)) return "🌤️대체로 맑음";
+    if (code === 3) return "☁️흐림";
+    if ([45, 48].includes(code)) return "🌫️안개";
+    if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return "🌧️비";
+    if ([71, 73, 75, 77, 85, 86].includes(code)) return "🌨️눈";
+    if ([95, 96, 99].includes(code)) return "⛈️천둥번개";
+    return "❓알 수 없음";
 }
 
 export async function getLiveWeather(lat, lon) {

@@ -14,14 +14,21 @@ article {
     padding-left: 35px;
 }
 
+mark {
+    background-color: #e8e3f1;
+    color: #4A2C65;
+    padding: 2px 5px;
+    border-radius: 2px;
+}
+
 .home-button{
-    float:right;
     background-color:#9B7AB5;
     color:white;
     padding:8px 15px;
     border-radius:8px;
     text-decoration:none;
     font-size:16px;
+    transition: all 0.4s ease;
     
 }
 
@@ -31,10 +38,46 @@ article {
 }
 
 h1 {
-    color: #4A2C65;         /* 신뢰감을 주는 짙은 남색(Navy) */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    color: #4A2C65;         /* 짙은 보라색 포인트 컬러 */
     font-size: 30px;           /* 글자 크기 */
     padding-bottom: 10px;     /* 밑줄과 글자 사이의 여백 */
     border-bottom: 3px solid #4A2C65; /* 제목 아래에 도톰한 메인 컬러 선 추가 */
+}
+
+.rainbow-title {
+    justify-content: center;
+    position: relative;
+    animation: rainbowText 4s linear infinite;
+}
+
+.rainbow-title .home-button {
+    position: absolute;
+    right: 0;
+}
+
+@keyframes rainbowText {
+    0% {
+        color: #e63946;
+    }
+    20% {
+        color: #f77f00;
+    }
+    40% {
+        color: #2a9d8f;
+    }
+    60% {
+        color: #457b9d;
+    }
+    80% {
+        color: #7b2cbf;
+    }
+    100% {
+        color: #e63946;
+    }
 }
 
 h2 {
@@ -45,6 +88,24 @@ h2 {
     border-left: 5px solid #4A2C65; /* 왼쪽에 포인트가 되는 보라색 두꺼운 선 추가 */
     margin-top: 40px;           /* 위쪽 콘텐츠와 충분한 거리 확보 */
     margin-bottom: 15px;        /* 아래쪽 콘텐츠와의 간격 */
+}
+
+.profile-page ul,
+.profile-page ol,
+.profile-page dl {
+    padding: 20px 20px;
+    margin: 0px;
+    transition: background-color 0.2s ease;
+}
+
+.profile-page h2 {
+    margin-bottom: 0;
+}
+
+.profile-page ul:hover,
+.profile-page ol:hover,
+.profile-page dl:hover {
+    background-color: #ffffff;
 }
 
 h3 {
@@ -75,7 +136,8 @@ a:hover {
     padding: 30px;          /* 브라우저 가장자리에 딱 붙지 않도록 안쪽 여백 추가 */
 }
 
-.trip-card {
+.media-card {
+    --card-rotate: 0deg;
     background-color: #ffffff;      /* 카드 배경은 깔끔한 흰색 */
     border: 1px solid #e0e0e0;      /* 연한 회색 테두리 선 */
     border-radius: 15px;             /* 모서리를 부드럽게 깎음 */
@@ -88,14 +150,23 @@ a:hover {
 
     /* 위치 변경(transform)과 그림자(box-shadow)가 변할 때 0.3초 동안 부드럽게 움직이도록 설정 */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: rotate(var(--card-rotate));
 }
 
-.trip-card:hover {
-    transform: translateY(-8px);     /* 카드를 Y축(위쪽) 방향으로 8px만큼 들어 올림 */
+.media-card:hover {
+    transform: translateY(-8px) rotate(var(--card-rotate));     /* 카드를 Y축(위쪽) 방향으로 8px만큼 들어 올림 */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* 그림자를 더 넓고 진하게 하여 공중 붕 뜬 입체감 부여 */
 }
 
-.trip-grid-container {
+.left-card {
+    --card-rotate: -2deg;
+}
+
+.right-card {
+    --card-rotate: 2deg;
+}
+
+.media-grid-container {
     display: grid;                  /* 카드들을 가로로 나란히 배치 */
     grid-template-columns: repeat(3, 1fr); /* 세 개의 열로 나누기 */
     gap: 15px;                          /* 카드 사이의 간격을 일정하게 유지 */
@@ -103,7 +174,7 @@ a:hover {
 }
 
 /* 카드 내부의 이미지 조절 */
-.trip-card img {
+.media-card img {
     display: block;                 /* 이미지를 블록화하여 아래 글씨와 자연스럽게 줄바꿈 */
     margin-bottom: 2px;            /* 이미지와 아래 설명 글씨 사이의 여백 */
     max-width: 100%;                /* 이미지가 부모 박스 밖으로 삐져나가지 않게 방지 */
@@ -111,10 +182,57 @@ a:hover {
     margin: 0 auto;                 /* 이미지가 카드 안에서 중앙에 위치하도록 설정 */
 }
 
+#trip-map {
+    width: 100%;
+    height: 460px;
+    margin: 25px 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.trip-marker {
+    width: 16px;
+    height: 16px;
+    background-color: #e63946;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.trip-popup {
+    text-align: center;
+}
+
+.trip-popup strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #4A2C65;
+    font-size: 16px;
+}
+
+.trip-popup img {
+    display: block;
+    width: 240px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
 figure img{
     width: 100%;
     height: auto;
     margin-bottom: 10px;
+}
+
+.caption-link-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.caption-link-row a {
+    flex-shrink: 0;
 }
 
 audio {
@@ -125,6 +243,7 @@ audio {
 /* 시간표 테이블 정돈 (myClass.html) */
 table {
     width: 100%;                    /* 테이블이 부모 폭(800px)에 가득 차도록 설정 */
+    table-layout: fixed;
     border-collapse: collapse;      /* HTML 특유의 겹치고 떨어져 있는 이중 테두리를 하나로 병합 */
     margin-top: 20px;
 }
@@ -139,6 +258,18 @@ th {
     background-color: #d2c6e7;      /* 헤더 영역 배경색 지정을 통한 구분 */
 }
 
+.schedule-image-cell {
+    padding: 10px;
+}
+
+.schedule-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 320px;
+    object-fit: cover;
+}
+
 
 fieldset {
     border: 1px solid #3f0786;      /* 딱딱한 검은 선을 보라색으로 변경 */
@@ -151,6 +282,10 @@ legend {
     font-weight: bold;              /* 그룹 제목은 두껍게 */
     color: #9f2c8e;                 /* 메인 자주색 적용 */
     padding: 0 10px;                /* 선과 글자가 붙지 않도록 좌우 여백 추가 */
+}
+
+fieldset:hover {
+    background-color: rgba(253, 253, 254, 0.6);
 }
 
 /* 텍스트 입력창, 비밀번호창, 셀렉트 박스 일괄 디자인 (태그 및 속성 선택자 활용) */
@@ -230,8 +365,37 @@ aside .btn-submit {
 nav ul {
     display: flex;
     list-style: none;
-    padding: 0;
     gap: 20px;
+    justify-content: space-between;
+    padding: 0 45px;
+}
+
+.nav-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.nav-toggle {
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 6px;
+    background-color: #9B7AB5;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav-toggle:hover {
+    background-color: #6A4F8A;
+}
+
+.shortcut-nav.is-collapsed ul {
+    display: none;
 }
 
 nav a {
@@ -251,10 +415,10 @@ main {
 }
 aside {
     flex: 3;            /* 전체 공간 중 30%만큼의 비율을 차지 */
-    background-color: #F7F4FB; /* 사이드바 구분을 위해 연한 배경색 추가 */
+    background-color: #908f9000; /* 사이드바 구분을 위해 연한 배경색 추가 */
     border-radius: 10px;
     border: 1px solid #E6DEEF;
-    box-shadow: 0 4px 12px rgba(108, 74, 145, 0.08);
+    box-shadow: 0 6px 15px rgba(108, 74, 145, 0.08);
     padding: 15px;
 }
 aside h2 {
@@ -267,9 +431,90 @@ aside h2 {
     align-items: flex-start; /* 두 영역의 높이가 달라도 디자인이 깨지지 않게 설정 */
 }
 
+.guest-input-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.guest-input-row input {
+    width: 250px;
+    margin: 0;
+}
+
+#message {
+    margin-bottom: 6px;
+}
+
+.guest-submit {
+    margin-top: 0;
+}
+
+.guestbook-area ul {
+    list-style: none;
+    padding: 0;
+}
+
+.guestbook-area li {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-left: 5px solid #9B7AB5;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 12px;
+}
+
+.guestbook-area strong {
+    color: #4A2C65;
+}
+
+.guestbook-area p {
+    margin: 6px 0;
+}
+
+.guestbook-area span {
+    color: #777777;
+    font-size: 14px;
+}
+
+.guestbook-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.guestbook-actions button {
+    border: none;
+    border-radius: 4px;
+    background-color: #e8e3f1;
+    color: #4A2C65;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.guestbook-actions button:hover {
+    background-color: #d2c6e7;
+}
+
 /* 화면 가로 폭이 768px 이하(모바일 기기 수준)가 되면 아래 규칙들이 발동합니다. */
 @media (max-width: 768px) {
-    
+    h1 {
+        font-size: 24px;
+    }
+
+    .home-button {
+        flex-shrink: 0;
+        padding: 6px 12px;
+        font-size: 0;
+        transition: all 0.2s ease;
+    }
+
+    .home-button::before {
+        content: "⌂";
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
     /* 1. 메인 메뉴바를 가로 배치에서 세로 쌓기 구조로 변경 */
     nav ul {
         flex-direction: column;
@@ -289,14 +534,16 @@ aside h2 {
      article{
         padding-left:0;
     }
-
-
     
     /* 3. 여행 앨범 3열 바둑판을 모바일에서는 1열(1fr)로 늘려서 시원하게 보여줌 */
-    .trip-grid-container {
+    .media-grid-container {
         grid-template-columns: 1fr;          /* 부모 박스 가득 차게 */
     }
-    .trip-card {
+    .media-card {
     width: 100%;
+    }
+
+    #trip-map {
+        height: 340px;
     }
 }

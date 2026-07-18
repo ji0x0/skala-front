@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방명록</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+ <div class="container">
+
+        <h1>방명록<a href="index.html" class="home-button">⌂ Home</a></h1>
+        <p>방문해주셔서 감사합니다 💛 따뜻한 한마디를 남겨주세요.</p>
+        <hr>
+
+    <form id="guestbook-form">
+        <fieldset>
+            <legend>📝</legend>
+            <p class="guest-input-row">
+                <label for="username">닉네임:</label>
+                <input type="text" id="username" name="username" required>
+            </p>
+            <p class="guest-input-row"> 
+                <label for="userpassword">비밀번호:</label>
+                <input type="password" id="userpassword" name="userpassword" required>
+            </p>
+            <p>
+                <label for="message">남기고 싶은 말:</label><br>
+                <textarea id="message" name="intro" rows="5" cols="50" required placeholder="여기에 내용을 입력하세요 (최대 200자)"></textarea>
+            </p>
+
+            <input type="submit" class="btn-submit guest-submit" value="메세지 남기기">
+        </fieldset>
+    </form>
+
+    <section class="guestbook-area">
+        <h2>남겨진 방명록</h2>
+        <ul id="guestbook-list"></ul>
+    </section>
+    <hr>
+    <footer>
+        <p>이메일 문의: wldudjy2@gmail.com</p>
+        <p><small>© 2026 Jiyeong's Universe. Created for educational purposes.</small></p>
+    </footer>
+ </div>
+ <script src="../script/guestBook.js"></script>
+</body>
+</html>
