@@ -239,6 +239,13 @@ audio {
     margin: 0 auto;
 }
 
+video {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+}
+
 /* 시간표 테이블 정돈 (myClass.html) */
 table {
     width: 100%;                    /* 테이블이 부모 폭(800px)에 가득 차도록 설정 */
@@ -345,8 +352,11 @@ textarea {
 
 aside .btn-submit {
     display: block;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     margin: 0 auto 10px;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 /* 다시 작성 버튼 개별 스타일 (서브 회색 컬러) */
@@ -434,10 +444,37 @@ aside h2 {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: nowrap;
+}
+
+.guest-input-row label {
+    flex: 0 0 auto;
+    white-space: nowrap;
 }
 
 .guest-input-row input {
+    flex: 0 1 250px;
     width: 250px;
+    min-width: 0;
+    margin: 0;
+}
+
+.email-input-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.email-input-row label,
+.email-input-row span {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.email-input-row input,
+.email-input-row select {
+    flex: 1 1 0;
+    min-width: 0;
     margin: 0;
 }
 
@@ -497,6 +534,27 @@ aside h2 {
 
 /* 화면 가로 폭이 768px 이하(모바일 기기 수준)가 되면 아래 규칙들이 발동합니다. */
 @media (max-width: 768px) {
+    body {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    .container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px 16px;
+    }
+
+    .email-input-row {
+        display: block;
+    }
+
+    .email-input-row input,
+    .email-input-row select {
+        margin-top: 5px;
+        margin-bottom: 15px;
+    }
+
     h1 {
         font-size: 24px;
     }
@@ -517,7 +575,17 @@ aside h2 {
     /* 1. 메인 메뉴바를 가로 배치에서 세로 쌓기 구조로 변경 */
     nav ul {
         flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
         gap: 10px;
+        padding: 0;
+        text-align: left;
+    }
+
+    nav li,
+    nav a {
+        width: 100%;
+        text-align: left;
     }
     
     /* 2. ★ 추가: 오늘의 주요소식(main)과 실시간 정보(aside)를 세로 1열로 정렬 */
@@ -544,5 +612,24 @@ aside h2 {
 
     #trip-map {
         height: 340px;
+    }
+
+    table {
+        font-size: clamp(10px, 2.8vw, 14px);
+    }
+
+    th,
+    td {
+        padding: 6px 3px;
+        overflow-wrap: anywhere;
+        word-break: keep-all;
+    }
+
+    .schedule-image-cell {
+        padding: 3px;
+    }
+
+    video {
+        max-width: 100%;
     }
 }
